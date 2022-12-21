@@ -6,12 +6,166 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="divOne">
+ <h1>Closure</h1>
+    
+    <!-- Question--1 -->
+    <pre>
+    Q1. function counter(){
+    var counter = 0;
+
+    function IncreaseCounter() {
+        return counter += 1;
+    };
+
+    return IncreaseCounter;
+    }
+    
+    var counter = counter();
+    alert(counter());
+    alert(counter());
+    alert(counter());
+    alert(counter());
+
+</pre>
+<p>Output: 1, 2, 3, 4</p>
+    <hr>
+<!-- Question--2 -->
+
+    <pre>
+    Q2. let count = 0;
+    (function () {
+      if (count === 0) {
+        let count = 1;
+        console.log(count); // What is logged?
+      }
+      console.log(count); // What is logged?
+    })();
+    </pre>
+
+    <p>Output: 1,0</p>
+    <hr>
+    <!-- Question--3 -->
+
+    <pre>
+    Q3: for (var i = 0; i < 3; i++) {
+        setTimeout(function log() {
+          console.log(i); // What is logged? 3 
+        }, 1000);
+      }
+
+    </pre>
+    <p>Output: 3,3,3</p>
+    <hr>
+    <!-- Question--4 -->
+
+    <pre>
+    Q4: Write a code to calculate area of a rectangle using inner function. 
+    In this case outer function should accept parameter length and inner function should accept parameter breadth. 
+    </pre>
+
+    <pre class="p">
+    Output: 
+    function OuterFunction() {
+
+        let  length = 10;
+    
+        function InnerFunction() {
+            let width = 2;
+            let area = length * width;
+            console.log(area);
+        }
+    
+        return InnerFunction;
+    }
+    let innerFunc = OuterFunction();
+    
+    innerFunc();
+    </pre>
+    <hr>
+    <!-- Question--5 -->
+
+    <pre>
+    Q5: Take a variable in outer function and create an inner function 
+        to increase the counter every time it is called?
+
+    </pre>
+
+    <pre class="p">
+    Output: 
+    function outerFunction(){
+        let x = 0;
+    
+        function innerFunction(){
+          return  x += 1;
+            
+        }
+        return innerFunction;
+    }
+    let result = outerFunction();
+    console.log(result());
+    </pre>
+    <hr>
+    <!-- Question--6 -->
+
+    <pre>
+    Q6: Print Output
+
+    var a = 12;
+    (function () {
+      alert(a);
+    })();
+
+    </pre>
+
+    <p>Output: 12</p>
+    <hr>
+    <!-- Question--7 -->
+
+    <pre>
+    Q7: var a = 10;
+        var x = (function () {
+                    var a = 12;
+                    return function () {
+                        alert(a);
+                    };
+                })();
+
+    x();
+
+    </pre>
+    <p>Output: 12</p>
+    <hr>
+    <!-- Question--8 -->
+    
+    <pre>
+    Q8: var globalVar = ""xyz"";
+
+    (function outerFunc(outerArg) {
+        var outerVar = 'a';
         
-        <div id="divTwo"></div>
-    
-    </div>
-    
-    <script src="index.js"></script>
+        (function innerFunc(innerArg) {
+        var innerVar = 'b';
+        
+        console.log(
+            ""outerArg = "" + outerArg + ""\n"" +
+            ""innerArg = "" + innerArg + ""\n"" +
+            ""outerVar = "" + outerVar + ""\n"" +
+            ""innerVar = "" + innerVar + ""\n"" +
+            ""globalVar = "" + globalVar);
+        
+        })(456);
+    })(123);"
+
+    </pre>
+
+    <p>Output: outerArg = 123,
+        innerArg = 456,
+        outerVar = a,
+        innerVar = b,
+        globalVar = xyz</p>
+
+
+    <script src="./index.js"></script>
+
 </body>
 </html>
